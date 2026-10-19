@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPIC TO DO LIST</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    <div id="mainblock">
+        <div class="title">
+            <h1 id="mainh1">EPIC TO DO LIST</h1>
+            <h4 id="randomtext">so epic..</h4>
+        </div>    
+
+        <div id="newtask">
+            <input type="text" placeholder="New task description">
+            <button onclick="addTask()" class="j">Add task</button>
+        </div>
+
+        <div id="tasks">
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+    
+<script>
+    const taskField = document.querySelector("input");
+    const taskList = document.querySelector("#tasks ul");
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    function renderTasks(){
+        taskList.innerHTML = "";
+
+        tasks.forEach((task, index) => {
+            const newTask = document.createElement("li");
+            newTask.textContent = task;
+
+            newTask.addEventListener("click", () => {
+                tasks.splice(index, 1);
+                saveTasks();
+                renderTasks();
+            });
+
+            taskList.append(newTask);
+        });
+    }
+
+    function saveTasks(){
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function addTask(){
+        const taskText = taskField.value.trim();
+
+        if(taskText !== ""){
+            tasks.push(taskText);
+
+            saveTasks();
+            renderTasks();
+
+            taskField.value = "";
+        } 
+        else{
+            
+        }
+    }
+
+    taskField.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+        addTask();
+        }
+    });
+
+    renderTasks();
+
+    /*good stuff*/
+    const texts = ["so epic..", "do something", "lazy salmon", "what if", "made by 2 idiots (technically)", "waow", "children of bodom is such a good band", "billions must listen to hamulec", "im hungry", "( ͡° ͜ʖ ͡°)", "celeste is the best video game ever made", "👽👽👽👽👽👽", "this message is exactly the same rarity as the other ones so i don't even know what it's doing here", "pickle", "one miniature hot dog", "marian", "this message is epic", "one thing i don't know why", "put down your phone right now", "boiled pizza"];
+    const randomText = document.getElementById("randomtext");
+    const randomTextPicker = Math.floor(Math.random() * texts.length);
+    randomText.textContent = texts[randomTextPicker]
+</script>
+</body>
+</html>
