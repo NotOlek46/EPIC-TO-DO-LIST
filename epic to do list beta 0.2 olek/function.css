@@ -1,0 +1,23 @@
+* { box-sizing: border-box; font-family: "Iosevka Charon", sans-serif; }
+
+#newtask{
+    background-color: rgba(0,0,0,0);
+    margin: auto;
+    padding: 5px;
+}
+
+#tasks ul li {
+  overflow-wrap: break-word;
+  word-break: break-all;
+  padding-top: 5px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+}
+
+ul{
+    text-align: left;
+    list-style-type: square;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');

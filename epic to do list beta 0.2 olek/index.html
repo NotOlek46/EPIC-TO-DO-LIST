@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPIC TO DO LIST</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styl.css">
+    <link rel="stylesheet" href="function.css">
+</head>
+<body>
+    <div id="topblock">
+        <div id="panelblock">
+            <button onclick="displayTasks()" id="tasksbtn">Task list</button>
+            <button onclick="displaySettings()" id="settingsbtn">Settings</button>
+        </div>
+        <div id="mainblock">
+            <div class="title">
+                <h1 id="mainh1">EPIC TO DO LIST</h1>
+                <h4 id="randomtext">so epic..</h4>
+            </div>  
+        </div>  
+    </div>
+    <div id="taskbox">
+        <div id="newtask">
+            <input type="text" placeholder="New task description">
+            <button onclick="addTask()" class="j">Add task</button>
+        </div>
+
+        <div id="tasks">
+            <ul>
+
+            </ul>
+        </div>
+        <div id="settings">
+            <h1 style="text-align: left; color: snow" id="settingsheadline">Settings</h1>
+            <label for="lang"><h3 id="langheadline">Language</h3><br>
+                <select name="langs" id="languages">
+                    <option value="eng">English</option>
+                    <option value="pol">Polski</option>
+                    <option value="ger">Deutsch</option>
+                </select>
+            </label>
+            <label for="them"><h3 id="themeheadline">Theme</h3><br>
+                <select name="them" id="themes">
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                    <option value="galaxy">Galaxy</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    
+<script>
+    checkLanguage()
+    document.getElementById("languages").addEventListener("change", ()=>{
+        if(document.getElementById("languages").value == "eng"){
+            changeToEnglish()
+        }
+        else if(document.getElementById("languages").value == "pol"){
+            changeToPolish()
+        }
+        else if(document.getElementById("languages").value == "ger"){
+            changeToGerman()
+        }
+    })
+    function checkLanguage(){
+        let language = document.getElementById("languages").value
+        console.log(language)
+        if(language == "eng"){
+            changeToEnglish()
+        }
+        else if(language == "pol"){
+            changeToPolish()
+        }
+        else if(language == "ger"){
+            changeToGerman()
+        }
+    }
+
+    function displaySettings(){
+        document.getElementById("tasks").style.display = "none"
+        document.getElementById("settings").style.display = "block"
+    }
+    function displayTasks(){
+        document.getElementById("tasks").style.display = "block"
+        document.getElementById("settings").style.display = "none"
+    }
+
+    // języki
+    function changeToEnglish(){
+        document.getElementById("tasksbtn").textContent = "Task list"
+        document.getElementById("settingsbtn").textContent = "Settings"
+        document.getElementById("mainh1").textContent = "EPIC TO DO LIST"
+
+        document.querySelector("input").placeholder = "New task description"
+        document.getElementsByClassName("j").textContent = "Add task"
+
+        document.getElementById("settingsheadline").textContent = "Settings"
+        document.getElementById("langheadline").textContent = "Language"
+        document.getElementById("themeheadline").textContent = "Theme"
+    }
+    function changeToPolish(){
+        document.getElementById("tasksbtn").textContent = "Lista zadań"
+        document.getElementById("settingsbtn").textContent = "Ustawienia"
+        document.getElementById("mainh1").textContent = "EPICKA LISTA RZECZY DO ZROBIENIA"
+
+        document.querySelector("input").placeholder = "Opis nowego zadania"
+        document.getElementsByClassName("j").textContent = "Dodaj zadanie"
+
+        document.getElementById("settingsheadline").textContent = "Ustawienia"
+        document.getElementById("langheadline").textContent = "Język"
+        document.getElementById("themeheadline").textContent = "Motyw"
+    }
+    function changeToGerman(){
+        document.getElementById("tasksbtn").textContent = "Aufgabenliste"
+        document.getElementById("settingsbtn").textContent = "Einstellungen"
+        document.getElementById("mainh1").textContent = "EPISCHE TO-DO-LISTE"
+
+        document.querySelector("input").placeholder = "Beschreibung der neuen Aufgabe"
+        document.getElementsByClassName("j").textContent = "Aufgabe hinzufügen"
+        
+        document.getElementById("settingsheadline").textContent = "Einstellungen"
+        document.getElementById("langheadline").textContent = "Sprache"
+        document.getElementById("themeheadline").textContent = "Thema"
+    }
+
+    const taskField = document.querySelector("input");
+    const taskList = document.querySelector("#tasks ul");
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    function renderTasks(){
+        taskList.innerHTML = "";
+
+        tasks.forEach((task, index) => {
+            const newTask = document.createElement("li");
+            newTask.textContent = task;
+
+            newTask.addEventListener("click", () => {
+                tasks.splice(index, 1);
+                saveTasks();
+                renderTasks();
+            });
+
+            taskList.append(newTask);
+        });
+    }
+
+    function saveTasks(){
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function addTask(){
+        const taskText = taskField.value.trim();
+
+        if(taskText !== ""){
+            tasks.push(taskText);
+
+            saveTasks();
+            renderTasks();
+
+            taskField.value = "";
+        } 
+    }
+
+    taskField.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+        addTask();
+        }
+    });
+
+    renderTasks();
+
+    /*good stuff*/
+    const texts = ["so epic..", "do something", "lazy salmon", "what if", "made by 2 idiots (technically)", "waow", "children of bodom is such a good band", "billions must listen to hamulec", "im hungry", "( ͡° ͜ʖ ͡°)", "celeste is the best video game ever made", "👽👽👽👽👽👽", "this message is exactly the same rarity as the other ones so i don't even know what it's doing here", "pickle", "one miniature hot dog", "marian", "this message is epic", "one thing i don't know why", "put down your phone right now", "boiled pizza"];
+    const randomText = document.getElementById("randomtext");
+    const randomTextPicker = Math.floor(Math.random() * texts.length);
+    randomText.textContent = texts[randomTextPicker]
+</script>
+</body>
+</html>
