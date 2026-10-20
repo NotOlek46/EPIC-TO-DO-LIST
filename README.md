@@ -5,5 +5,5 @@
 * Adding tasks
 * Removing tasks
 
-yeah, thats pretty much.
+yeah, thats pretty much it.
 
