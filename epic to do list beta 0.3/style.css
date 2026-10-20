@@ -1,0 +1,155 @@
+
+body{
+    background-color: var(--bg);
+}
+
+/* UI 1 */
+
+#mainblock{
+    text-align: center;
+    border-radius: 0px;
+    background-color: rgba(0,0,0,0);
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#tasks{
+    background-color: var(--bg2);
+    margin: auto;
+    width: 90vw;
+    height: 75vh;
+    padding: 0px;
+    border: solid 2px var(--border);
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+#bottomblock{
+    text-align: center;
+    border-radius: 0px;
+    background-color: rgba(0,0,0,0);
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    flex-direction: row-reverse;
+    display: flex;
+    padding-right: 10%;
+}
+
+/* UI 2 */
+
+li{
+    color:var(--muted-text);
+    transition-duration: 0.25s;
+}
+li:hover{
+    color: var(--text);
+}
+
+input{
+    width: 90vw;
+    height: 40px;
+    background-color: var(--bg);
+    border: solid 2px var(--border);
+    border-radius: 0px;
+    color: var(--text);
+    text-align: center;
+    font-family: inherit;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+input:focus{
+    border: solid 2px var(--text);
+    background-color: var(--bg2);
+    outline: none;
+}
+
+/* TEXT */
+
+#mainh1{
+    color: var(--text);
+    margin-bottom: 0px;
+}
+#randomtext {
+    color: var(--text);
+    margin-top: 1%;
+
+}
+
+
+
+/* button (might be removed) */
+.j{
+    width: 5vw;
+    height: 30px !important;
+    background-color: #0B1926;
+    border: solid 2px #51736F;
+    border-radius: 0px;
+    padding: 0;
+    align-self: center;
+    transition-duration: 0.1s;
+    color:#D5FFEA;
+    display:none
+}
+
+.j:hover {
+    background-color:#253B40;
+}
+.j:active {
+    background-color: #D5FFEA;
+    border: solid 2px #D5FFEA
+}
+
+#settingsbtn{
+    margin-top: 5px;
+    background-color: var(--bg2);
+    width: 140px;
+    height: 60px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#settings {
+    background-color: var(--bg);
+    border: solid 2px var(--border);
+    display: none;
+    width: 1000px;
+    height: 400px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+}
+#settings button{
+    color: #D5FFEA;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    font-size: 20px;
+}
+#settings select{
+    color: #D5FFEA;
+    background-color: var(--bg2);
+    border: none;
+    text-decoration: underline;
+    font-size: 20px;
+}
+#settingscontainer{
+    text-align: center;
+    border-radius: 0px;
+    background-color: transparent;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
