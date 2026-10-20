@@ -1,0 +1,5 @@
+    /*good stuff*/
+    const texts = ["so epic..", "do something", "lazy salmon", "what if", "made by 2 idiots (technically)", "waow", "children of bodom is such a good band", "billions must listen to hamulec", "im hungry", "( ͡° ͜ʖ ͡°)", "celeste is the best video game ever made", "👽👽👽👽👽👽", "this message is exactly the same rarity as the other ones so i don't even know what it's doing here", "pickle", "one miniature hot dog", "marian", "this message is epic", "one thing i don't know why", "put down your phone right now", "boiled pizza", "so epic..", "never again, but i agained", "nah, hollow knight is better"];
+    const randomText = document.getElementById("randomtext");
+    const randomTextPicker = Math.floor(Math.random() * texts.length);
+    randomText.textContent = texts[randomTextPicker]
