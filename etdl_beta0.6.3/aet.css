@@ -1,0 +1,20 @@
+:root {
+    --bg: #0B1926;
+    --bg2: #253B40;
+    --border: #51736F;
+    --muted-text: #96D9B3;
+    --text: #D5FFEA;
+}
+
+* {
+    border-radius: 0px !important;
+    font-family: 'Iosevka Term' !important;
+}
+
+@font-face {
+  font-family: 'Iosevka Term';
+  src: url('IosevkaTerm-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-display: block;
+}
+
