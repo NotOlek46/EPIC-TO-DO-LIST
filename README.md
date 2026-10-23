@@ -1,5 +1,5 @@
 # ETDL (EPIC-TO-DO-LIST)
-### Easy, minimalistic, and most importantly... EPIC To Do List.
+### Easy, minimalistic, and most importantly... EPIC, To Do List.
 
 **Features:**
 * Adding tasks
