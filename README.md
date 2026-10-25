@@ -4,6 +4,8 @@
 **Features:**
 * Adding tasks
 * Removing tasks
+* 9 Themes
+* 4 Languages (English, Polish, German, Japanese)
 
 yeah, thats pretty much it.
 
